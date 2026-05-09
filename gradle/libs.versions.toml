@@ -11,6 +11,9 @@ selenium = "4.27.0"
 [libraries]
 kensa-junit = { module = "dev.kensa:kensa-framework-junit6", version.ref = "kensa" }
 kensa-kotest = { module = "dev.kensa:kensa-assertions-kotest", version.ref = "kensa" }
+kensa-kotest-test-support = { module = "dev.kensa:kensa-kotest-test-support", version.ref = "kensa" }
+kensa-kotest-test-support-xml = { module = "dev.kensa:kensa-kotest-test-support-xml", version.ref = "kensa" }
+kensa-kotest-test-support-json = { module = "dev.kensa:kensa-kotest-test-support-json", version.ref = "kensa" }
 kensa-hamcrest = { module = "dev.kensa:kensa-assertions-hamcrest", version.ref = "kensa" }
 kensa-playwright-junit6 = { module = "dev.kensa:kensa-framework-playwright-junit6", version.ref = "kensa" }
 kensa-selenium-junit6 = { module = "dev.kensa:kensa-framework-selenium-junit6", version.ref = "kensa" }
