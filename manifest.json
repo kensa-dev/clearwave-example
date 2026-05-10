@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "kensaVersion": "0.8.0-SNAPSHOT",
+  "kensaVersion": "0.8.0",
   "sources": [
     { "id": "test", "title": "Clearwave Telecoms — Acceptance Tests", "url": "sources/test" },
     { "id": "uiTest", "title": "Clearwave Telecoms — UI Tests", "url": "sources/uiTest" }
