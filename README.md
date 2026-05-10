@@ -8,6 +8,8 @@ The domain is a fictional telecoms provider ("Clearwave") with two services and 
 - **OrderService** — places a broadband order and coordinates with external network and tracking systems
 - **Feasibility checker UI** — a Vite + React + shadcn page that submits the feasibility form to the live `FeasibilityService`, exercised end-to-end through both Playwright and Selenium
 
+- **System View** — auto-generated component diagram showing the relationships across all services exercised in tests. Available as a top-level page in the report sidebar.
+
 Tests are written using the Kensa Given-When-Then DSL with [http4k](https://http4k.org) stubs standing in for downstream APIs. The HTML report generated from these tests is published as a live example at:
 
 **[kensa-dev.github.io/clearwave-example](https://kensa-dev.github.io/clearwave-example)**
