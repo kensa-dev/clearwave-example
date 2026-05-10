@@ -39,10 +39,19 @@ import dev.kensa.Action
 import dev.kensa.ActionContext
 import dev.kensa.GivensContext
 import dev.kensa.Notes
+import dev.kensa.RenderedHintStrategy.HintFromProperty
+import dev.kensa.RenderedValueStrategy.UseIdentifierName
+import dev.kensa.RenderedValueWithHint
+import dev.kensa.Sources
 import dev.kensa.StateCollector
+import dev.kensa.kotest.testsupport.field.json.JsonField
+import dev.kensa.kotest.testsupport.field.json.JsonMapField
 import dev.kensa.kotest.testsupport.field.matching
 import dev.kensa.kotest.testsupport.field.of
 import dev.kensa.kotest.testsupport.field.withListOf
+import dev.kensa.kotest.testsupport.field.xml.XmlField
+import dev.kensa.kotest.testsupport.field.xml.XmlListField
+import dev.kensa.kotest.testsupport.field.xml.XmlSetField
 import dev.kensa.render.Language
 import dev.kensa.state.CapturedInteractionBuilder.Companion.from
 import dev.kensa.util.Attributes
@@ -61,11 +70,20 @@ read like English at the call-site:
 
 - `anAddressPostcode of fixtures[postcode]`
 - `status of "SERVICEABLE"`
-- `profileTypes withListOf "FTTP", "FTTP", "FTTC"`
+- `profileTypes.withListOf("FTTC")`
 
 JSON fields use JSONPointers; XML fields use XPath. Field declarations live in
 [FeasibilityResponseFields] and [FibreVisionResponseFields] alongside this test.
+
+Hover any field name in the rendered sentence to see its underlying path —
+wired through `@RenderedValueWithHint`.
 """)
+@RenderedValueWithHint(JsonField::class,    valueStrategy = UseIdentifierName, hintStrategy = HintFromProperty, hintParam = "path")
+@RenderedValueWithHint(JsonMapField::class, valueStrategy = UseIdentifierName, hintStrategy = HintFromProperty, hintParam = "path")
+@RenderedValueWithHint(XmlField::class,     valueStrategy = UseIdentifierName, hintStrategy = HintFromProperty, hintParam = "path")
+@RenderedValueWithHint(XmlListField::class, valueStrategy = UseIdentifierName, hintStrategy = HintFromProperty, hintParam = "path")
+@RenderedValueWithHint(XmlSetField::class,  valueStrategy = UseIdentifierName, hintStrategy = HintFromProperty, hintParam = "path")
+@Sources(FeasibilityResponseFields::class, FibreVisionResponseFields::class)
 class FieldDslExamplesTest : ClearwaveTest() {
 
     private val mapper = jacksonObjectMapper()
