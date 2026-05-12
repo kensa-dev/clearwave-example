@@ -26,7 +26,6 @@ class ClearwaveExtension : BeforeAllCallback, AutoCloseable {
         registerFixtures(JavaTelecomsFixtures::class.java)
         registerCapturedOutputs(TelecomsCapturedOutputs)
         konfigure {
-            titleText           = "Clearwave Telecoms — Acceptance Tests"
             packageDisplay      = PackageDisplay.HideCommonPackages
             packageDisplayRoot  = "com.clearwave"
             autoOpenTab         = Tab.SequenceDiagram

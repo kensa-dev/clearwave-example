@@ -7,7 +7,10 @@ plugins {
 
 kensa {
     sourceSets = setOf("uiTest", "test")
+    outputSourceSets = setOf("uiTest", "test")
     site = true
+    sourceTitles.put("test", "Unit & Integration Tests")
+    sourceTitles.put("uiTest", "UI Tests")
 }
 
 group = "com.clearwave"
@@ -53,11 +56,6 @@ kotlin {
     jvmToolchain(21)
 }
 
-tasks.withType<KotlinCompile>().configureEach {
-    compilerOptions {
-        freeCompilerArgs.addAll("-Xskip-prerelease-check")
-    }
-}
 
 sourceSets {
     create("uiTest") {
@@ -147,3 +145,5 @@ tasks.test {
     jvmArgumentProviders.add(CommandLineArgumentProvider { listOf("-Djava.awt.headless=true") })
     dependsOn(uiBuild)
 }
+
+tasks.check { dependsOn(uiTest) }

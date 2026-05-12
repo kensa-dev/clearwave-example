@@ -13,7 +13,6 @@ class ClearwaveUiExtension : BeforeAllCallback, AutoCloseable {
 
     init {
         konfigure {
-            titleText                       = "Clearwave Telecoms — UI Tests"
             sourceLocations                 = listOf(Path("src/uiTest/kotlin"))
             uiTesting.autoScreenshotOnFailure = true
         }
