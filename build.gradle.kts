@@ -6,6 +6,7 @@ plugins {
 }
 
 kensa {
+    kensaCoreVersion = libs.versions.kensa.get()
     sourceSets = setOf("uiTest", "test")
     outputSourceSets = setOf("uiTest", "test")
     site = true
