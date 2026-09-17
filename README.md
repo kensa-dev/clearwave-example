@@ -21,25 +21,24 @@ The project has two test cycles.
 ### Service-level tests (canary build)
 
 ```bash
-./gradlew test
+./gradlew test assembleKensaSite
 ```
 
-Runs the http4k-driven `FeasibilityServiceTest` and `OrderServiceTest`. No browser needed. The report is written to `build/kensa-output`.
+Runs the http4k-driven `FeasibilityServiceTest` and `OrderServiceTest`. No browser needed. `assembleKensaSite` gathers the report into `build/kensa-site`.
 
 ### UI tests
 
 ```bash
 ./gradlew installPlaywrightBrowsers   # one-off — installs Chromium for Playwright
-./gradlew uiTest                      # builds the UI and runs Playwright + Selenium tests
+./gradlew uiTest assembleKensaSite    # builds the UI and runs Playwright + Selenium tests
 ```
 
-UI tests need Chrome installed (Selenium uses it via Selenium Manager). The Vite UI is built automatically before the tests run. The report is written to `build/kensa-output-ui`.
+UI tests need Chrome installed (Selenium uses it via Selenium Manager). The Vite UI is built automatically before the tests run. Both source sets land in the same site as separate sources.
 
-To open either report:
+To open the report:
 
 ```bash
-kensa --dir build/kensa-output
-kensa --dir build/kensa-output-ui
+kensa --dir build/kensa-site
 ```
 
 ## Purpose
@@ -59,4 +58,4 @@ This project serves two roles:
 | [http4k](https://http4k.org) | HTTP client & stub server |
 | [Vite](https://vite.dev) + [React](https://react.dev) + [shadcn/ui](https://ui.shadcn.com) | Feasibility UI |
 | [Kotest](https://kotest.io) | Assertions |
-| [JUnit 5](https://junit.org/junit5/) | Test runner |
+| [JUnit 6](https://junit.org/) | Test runner |
